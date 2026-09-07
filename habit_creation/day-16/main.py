@@ -13,6 +13,15 @@ Travel → 550
 
 4). In your current clean_data() function, how many different jobs is the function doing? Looping, data validating, type converting, counting, error handling, information printing. 
 
+
+
+Day 16:
+Time: i saw the task and think,  while thinking i slept for some time then up and got the idea and followed it
+Habit battle: bettled with in like day2/3 but not that much 
+What I built: expense calculation's clean_data() which returns  clean rows + quality information
+What confused me: not much
+What I learned:  how to return a data for future use
+
 """
 
 
@@ -31,6 +40,10 @@ def clean_data(input_content):
     # normalize category names
     # convert amount from string → integer
     # handle invalid/missing data
+    return_dict = {
+        "clean_data": [],
+        "str_info": ''
+    }
     clean_data = []
     data_cnt = {
     "valid_data_cnt" : 0,
@@ -45,11 +58,13 @@ def clean_data(input_content):
                 data_cnt['valid_data_cnt']+=1
             else:
                 data_cnt['invalid_data_cnt']+=1
+                return_dict['str_info'] += '\n Skip the invalid Category data'
         except ValueError:
             data_cnt['invalid_data_cnt']+=1
-            print('Skip the invalid data')
-    print(f"\n\nTotal rows: {(data_cnt['valid_data_cnt'] + data_cnt['invalid_data_cnt'])}  ||  Valid rows: {data_cnt['valid_data_cnt']}  ||  Invalid rows: {data_cnt['invalid_data_cnt']}\n\n")
-    return clean_data
+            return_dict['str_info'] += '\n Skip the invalid ValueError data'
+    return_dict['str_info'] += f"\n\nTotal rows: {(data_cnt['valid_data_cnt'] + data_cnt['invalid_data_cnt'])}  ||  Valid rows: {data_cnt['valid_data_cnt']}  ||  Invalid rows: {data_cnt['invalid_data_cnt']}\n\n"
+    return_dict['clean_data'] = clean_data
+    return return_dict
 
 def process_data(clean_content):
     #Calculate category totals.
@@ -67,13 +82,14 @@ def process_data(clean_content):
 input_file = "habit_creation/day-14/expenses.csv"
 get_csv_data = read_data(input_file)
 get_clean_data = clean_data(get_csv_data)
-get_process_data = process_data(get_clean_data)
+print(get_clean_data['str_info'])
+get_process_data = process_data(get_clean_data['clean_data'])
 
 category_str = ''
 if isinstance(get_process_data, dict):
     total_amount = 0
     for key, value in get_process_data.items():
         category_str += f"{key} → {value}\n"
-        total_amount += int(value)
+        total_amount += value
     category_str += f"\nTotal Expense → {total_amount}\n"
 print(category_str)

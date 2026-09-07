@@ -68,7 +68,7 @@ def process_data(clean_content):
     return category_dict_amount
 
 
-input_file = "habit_creation/day-14/expenses.csv"
+input_file = "habit_creation/day-15/expenses.csv"
 get_csv_data = read_data(input_file)
 get_clean_data = clean_data(get_csv_data)
 get_process_data = process_data(get_clean_data)
