@@ -1,0 +1,29 @@
+{
+    "developer": {
+        "name": "SAndeeP Kumar Mishra",
+        "role": "  DevELoper",
+        "experience": "4.5 years"
+    },
+    "expenses": [
+        {
+            "category": "Travel",
+            "amount": 45.99
+        },
+        {
+            "category": "Food",
+            "amount": "120.00"
+        },
+        {
+            "category": "Food",
+            "amount": 250
+        },
+        {
+            "category": "Travel",
+            "amount": "500"
+        },
+        {
+            "category": "shopping",
+            "amount": "80.50"
+        }
+    ]
+}
