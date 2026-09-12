@@ -1,0 +1,12 @@
+{
+    "developer": {
+        "name": "Sandeep Kumar Mishra",
+        "role": "Developer",
+        "experience": "4.5 Years"
+    },
+    "expenses": {
+        "Travel": 545.99,
+        "Food": 370.0,
+        "Shopping": 80.5
+    }
+}
